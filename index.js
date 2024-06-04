@@ -40,15 +40,16 @@ function loadStyle(style) {
 function loadScript(script) {
   const existingScript = document.getElementById('dynamic-script');
   if (existingScript) {
-    existingScript.src = script;
-  } else {
-    const newScript = document.createElement('script');
-    newScript.src = script;
-    newScript.id = 'dynamic-script';
-    document.body.appendChild(newScript); // Alteração aqui
+    existingScript.remove();
   }
+  const newScript = document.createElement('script');
+  newScript.src = script;
+  newScript.id = 'dynamic-script';
+  newScript.onload = () => {
+    console.log(`${script} carregado com sucesso.`);
+  };
+  document.body.appendChild(newScript);
 }
-
 
 /* Função para Salvar Configurações */
 function saveSettings() {
@@ -76,5 +77,3 @@ document.addEventListener("DOMContentLoaded", function() {
     currentDateElement.textContent = formattedDate;
   }
 });
-
-
