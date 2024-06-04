@@ -1,0 +1,62 @@
+.content {
+  margin-left: 250px; /* Adicionar margem à esquerda igual à largura da barra lateral */
+  padding: 20px; /* Adicionar preenchimento */
+  width: 50%;
+}
+
+.content h1 {
+  font-size: 2em;
+  color: #2c3e50;
+}
+
+.content h2 {
+  font-size: 1.5em;
+  color: #2c3e50;
+  margin-top: 20px;
+}
+
+.date p {
+  font-size: 1em;
+  color: #2c3e50;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.profile-details {
+  color: #2c3e50;
+}
+
+.profile-details h2 {
+  margin: 0;
+}
+
+.recent-activities ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recent-activities li {
+  background-color: #ecf0f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recent-activities span {
+  font-size: 0.9em;
+  color: #7f8c8d;
+}

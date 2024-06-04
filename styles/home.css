@@ -1,0 +1,199 @@
+
+/* Estilos para a Seção de Resumo */
+.summary-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.summary-item {
+    width: 18%;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 1.5%;
+    text-align: left;
+}
+
+.summary-item:last-child {
+    margin-right: 0;
+}
+
+.summary-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.summary-item h3 {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #2c3e50;
+}
+
+.summary-item p.price {
+    font-size: 1.2em;
+    margin-top: 5px;
+    color: #2c3e50;
+    font-weight: 700;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.summary-item i {
+    font-size: 1.5em;
+    color: #3498db;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Estilos para Outras Informações */
+.other-info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.other-info {
+    width: 23%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-right: 1.5%;
+    text-align: left;
+}
+
+.other-info:last-child {
+    margin-right: 0;
+}
+
+.other-info h2 {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.other-info p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.other-info i {
+    font-size: 1.5em;
+    color: #2ecc71;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+/* Estilos para a Seção de Principais Gastos Financeiros */
+.d2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.d2 .righth2{
+    width: 45%;
+    padding: 20px 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.d2 .lefth2{
+    width: 45%;
+    padding: 20px 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.expenses-section {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 45%;
+}
+
+.investments-section{
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 45%;
+}
+
+.expenses-section h2, .investments-section h2{
+  margin-top: 0;
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+.expenses-list, .investments-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.expenses-list li, .investments-list li{
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.expense-item, .investment-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 10px;
+}
+
+.expense-item:last-child, .investment-item:last-child {
+  border-bottom: none;
+}
+
+.expense-details, .investment-details {
+  display: flex;
+  align-items: center;
+}
+
+.expense-details p, .investment-details p {
+  margin-left: 10px;
+}
+
+.expense-actions i {
+  margin-right: 10px;
+  color: #3498db;
+  cursor: pointer;
+}
+
+.expense-actions i:hover {
+  color: #2980b9;
+}
+
+/* Adicionando bordas sutis */
+.expense-item {
+  border-top: 1px solid #ddd;
+}
+
+.expense-details,
+.expense-actions {
+  border-right: 1px solid #ddd;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.expense-info, .investment-info  {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
