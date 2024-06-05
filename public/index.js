@@ -31,7 +31,6 @@ function loadStyle(style) {
 
 // =================================================================
 
-
 /* Manipulação de Scripts (JS) */
 
 /* Função para Carregar JavaScript */
@@ -59,7 +58,10 @@ function loadPage(page, style, script, element) {
   addActiveClass(element);
 
   fetch(page)
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.text();
+    })
     .then(data => {
       document.getElementById('content').innerHTML = data;
       loadStyle(style);
@@ -107,4 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadScript('test.js');
   }
 });
+
+/* Alterações feitas:
+1. Adicionada verificação de resposta de rede na função `loadPage`.
+2. Garantido que o estilo e script são carregados somente se existirem.
+3. Adicionado um carregador de script de teste apenas em ambiente de desenvolvimento.
+*/
 
