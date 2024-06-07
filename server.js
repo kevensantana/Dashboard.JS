@@ -7,6 +7,14 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
+
+// Definir o tipo MIME para arquivos JavaScript
+express.static.mime.define({'application/javascript': ['js']});
+
+// Servir arquivos estáticos a partir do diretório 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 // Chave secreta para assinar tokens
 const SECRET_KEY = 'sua-chave-secreta-super-segura';
 
