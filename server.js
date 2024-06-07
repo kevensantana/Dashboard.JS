@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const path = require('path');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -11,8 +11,6 @@ const PORT = 3000;
 const SECRET_KEY = 'sua-chave-secreta-super-segura';
 
 app.use(bodyParser.json());
-
-// Configura a pasta 'public' como a fonte dos arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
 let users = JSON.parse(fs.readFileSync('users.json', 'utf8'));
@@ -52,7 +50,29 @@ function authenticateToken(req, res, next) {
 app.get('/profile', authenticateToken, (req, res) => {
   const user = users.find(u => u.username === req.user.username);
   if (user) {
-    res.json({ username: user.username, email: user.email });
+    res.json({ 
+      username: user.username, 
+      email: user.email,  
+      address: user.address,
+      phone: user.phone,
+      balance: user.balance});
+  } else {
+    res.status(404).json({ message: 'Usuário não encontrado' });
+  }
+});
+
+// Novo endpoint para atualizar o perfil
+app.post('/updateProfile', authenticateToken, (req, res) => {
+  const { username, email, address, phone } = req.body;
+  const user = users.find(u => u.username === req.user.username);
+
+  if (user) {
+    user.username = username;
+    user.email = email;
+    user.address = address;
+    user.phone = phone;
+    fs.writeFileSync('users.json', JSON.stringify(users, null, 2));  // Atualiza o arquivo users.json
+    res.json({ success: true });
   } else {
     res.status(404).json({ message: 'Usuário não encontrado' });
   }

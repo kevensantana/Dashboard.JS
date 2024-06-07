@@ -1,62 +1,92 @@
-.content {
-  margin-left: 250px; /* Adicionar margem à esquerda igual à largura da barra lateral */
-  padding: 20px; /* Adicionar preenchimento */
-  width: 50%;
-}
-
-.content h1 {
-  font-size: 2em;
-  color: #2c3e50;
-}
-
-.content h2 {
-  font-size: 1.5em;
-  color: #2c3e50;
-  margin-top: 20px;
-}
-
-.date p {
-  font-size: 1em;
-  color: #2c3e50;
-}
-
-.profile-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.profile-picture img {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-}
-
-.profile-details {
-  color: #2c3e50;
-}
-
-.profile-details h2 {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
-}
-
-.recent-activities ul {
-  list-style-type: none;
   padding: 0;
 }
 
-.recent-activities li {
-  background-color: #ecf0f1;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
-.recent-activities span {
-  font-size: 0.9em;
-  color: #7f8c8d;
+#profile-container {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile-container p {
+  font-size: 18px;
+  color: #555;
+}
+
+#edit-profile-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#edit-profile-btn:hover {
+  background-color: #0056b3;
+}
+
+#edit-profile-form {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#edit-profile-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+#edit-profile-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#save-profile-btn, #cancel-edit-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 48%;
+}
+
+#save-profile-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+#save-profile-btn:hover {
+  background-color: #218838;
+}
+
+#cancel-edit-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+#cancel-edit-btn:hover {
+  background-color: #c82333;
 }

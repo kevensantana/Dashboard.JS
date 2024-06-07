@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+document.getElementById('logout-btn').addEventListener('click', () => {
+  localStorage.removeItem('token');
+  window.location.href = 'login.html';
+});
+
+
 /* Alterações feitas:
 1. Adicionada verificação de resposta de rede na função `loadPage`.
 2. Garantido que o estilo e script são carregados somente se existirem.

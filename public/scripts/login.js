@@ -18,7 +18,8 @@ document.getElementById('login-form').addEventListener('submit', function(event)
       localStorage.setItem('token', data.token);
       alert('Login bem-sucedido!');
       // Redirecionar ou carregar a página de perfil
-      loadPage('pages/perfil.html', 'styles/perfil.css', 'scripts/perfil.js', document.querySelector('.sidebar ul li a[href="#perfil"]'));
+      // loadPage('pages/perfil.html', 'styles/perfil.css', 'scripts/perfil.js', document.querySelector('.sidebar ul li a[href="#perfil"]'));
+      window.location.href = 'index.html';
     } else {
       alert('Login falhou: ' + data.message);
     }

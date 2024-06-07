@@ -1,8 +1,18 @@
 [
   {
-      "username": "admin",
-      "password": "admin",
-      "email": "admin@example.com",
-      "name": "Administrador"
+    "username": "admin",
+    "password": "admin",
+    "email": "johndoe@example.com",
+    "address": "123 Main St, Springfield",
+    "phone": "123-456-7890",
+    "balance": "1000.00"
+  },
+  {
+    "username": "janedoe",
+    "password": "securepassword",
+    "email": "janedoe@example.com",
+    "address": "456 Elm St, Springfield",
+    "phone": "987-654-3210",
+    "balance": "1500.50"
   }
 ]
