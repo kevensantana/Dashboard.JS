@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Gastos Mensais</title>
+    <link rel="stylesheet" href="src/styles/financeiro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+</head>
+<body>
+    <div class="container">
+        <h1>Tabela de Gastos Mensais</h1>
+
+        <div class="topnav">
+            <!-- Seção de Pesquisa e Seleção de Mês -->
+            <div id="header" class="header">
+                <div>
+                    <input type="text" id="searchInput" placeholder="Pesquisar despesas...">
+                </div>
+                <div class="nav-links">
+                    <a href="#fixed-expenses">Despesas Fixas</a>
+                    <a href="#variable-expenses">Despesas Variáveis</a>
+                    <a href="#savings">Economias</a>
+                </div>
+                <div>
+                    <select id="monthSelect">
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Despesas Fixas -->
+        <div id="fixed-expenses" class="section">
+            <h2>Despesas Fixas</h2>
+            <table id="fixedExpensesTable" class="expensesTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Gasto</th>
+                        <th>Data</th>
+                        <th>Preço</th>
+                        <th>Parcela</th>
+                        <th>Data para Pagar</th>
+                        <th>Porcentagem</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="fixed">
+                        <td contenteditable="false">Aluguel</td>
+                        <td contenteditable="false">01/06/2024</td>
+                        <td contenteditable="false">R$:1500.00</td>
+                        <td contenteditable="false">Não</td>
+                        <td contenteditable="false">01/07/2024</td>
+                        <td contenteditable="false" class="percentage">0%</td>
+                        <td>
+                            <button onclick="editExpense(this)"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total de Despesas Fixas</td>
+                        <td colspan="2" id="fixedTotal">0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="addFixedExpenseButton">Adicionar Nova Despesa Fixa</button>
+        </div>
+
+        <!-- Tabela de Despesas Variáveis -->
+        <div id="variable-expenses" class="section">
+            <h2>Despesas Variáveis</h2>
+            <table id="variableExpensesTable" class="expensesTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Gasto</th>
+                        <th>Data</th>
+                        <th>Preço</th>
+                        <th>Parcela</th>
+                        <th>Data para Pagar</th>
+                        <th>Porcentagem</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="variable">
+                        <td contenteditable="false">Mercado</td>
+                        <td contenteditable="false">05/06/2024</td>
+                        <td contenteditable="false">R$:300.00</td>
+                        <td contenteditable="false">Não</td>
+                        <td contenteditable="false">05/07/2024</td>
+                        <td contenteditable="false" class="percentage">0%</td>
+                        <td>
+                            <button onclick="editExpense(this)"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Total de Despesas Variáveis</td>
+                        <td colspan="2" id="variableTotal">0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="addVariableExpenseButton">Adicionar Nova Despesa Variável</button>
+        </div>
+
+        <!-- Seção de Economias -->
+        <div id="savings" class="section">
+            <h2>Economias</h2>
+            <table id="savingsTable" class="expensesTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Investimento</th>
+                        <th>Data</th>
+                        <th>Preço</th>
+                        <th>Meta</th>
+                        <th>Falta para Meta</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="savings">
+                        <td contenteditable="false">Investimento A</td>
+                        <td contenteditable="false">01/06/2024</td>
+                        <td contenteditable="false">R$:500.00</td>
+                        <td contenteditable="false">R$:1000.00</td>
+                        <td contenteditable="false">R$:500.00</td>
+                        <td>
+                            <button onclick="editExpense(this)"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total Investido</td>
+                        <td colspan="2" id="savingsTotal">0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="addSavingsButton">Adicionar Novo Investimento</button>
+        </div>
+
+        <!-- Totais Gerais -->
+        <div id="totals">
+            <p>Total Geral: R$ <span id="overallTotal">0.00</span></p>
+        </div>
+    </div>
+
+    <!-- Popup para Adicionar Nova Despesa -->
+    <div id="expensePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Adicionar Nova Despesa</h2>
+            <label for="expenseName">Nome do Gasto:</label>
+            <input type="text" id="expenseName"><br>
+            <label for="expenseDate">Data:</label>
+            <input type="date" id="expenseDate"><br>
+            <label for="expensePrice">Preço:</label>
+            <input type="number" id="expensePrice"><br>
+            <label for="expenseInstallment">Parcela:</label>
+            <select id="expenseInstallment">
+                <option value="Não">Não</option>
+                <option value="Sim">Sim</option>
+            </select><br>
+            <label for="paymentDate">Data para Pagar:</label>
+            <input type="date" id="paymentDate"><br>
+            <button id="saveExpenseButton">Salvar</button>
+            <button id="cancelExpenseButton">Cancelar</button>
+        </div>
+    </div>
+
+     <!-- Popup de Economia -->
+     <div id="savingsPopup" class="popup">
+        <div class="popup-content">
+            <span id="closeSavingsPopup" class="close">&times;</span>
+            <h2>Adicionar Economia</h2>
+            <label for="savingsName">Nome:</label>
+            <input type="text" id="savingsName">
+            <label for="savingsDate">Data:</label>
+            <input type="date" id="savingsDate">
+            <label for="savingsAmount">Valor:</label>
+            <input type="number" id="savingsAmount" step="0.01">
+            <label for="savingsGoal">Meta:</label>
+            <input type="number" id="savingsGoal" step="0.01">
+            <button id="saveSavingsButton">Salvar</button>
+            <button id="cancelSavingsButton">Cancelar</button>
+        </div>
+    </div>
+
+
+    <script src="src/scripts/financeiro.js"></script>
+</body>
+</html>

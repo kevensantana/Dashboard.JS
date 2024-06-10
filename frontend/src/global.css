@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+
+/* Reset e Estilos Básicos */
+body {
+  font-family: 'Roboto', sans-serif;
+
+  display: flex;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ecf0f1;
+
+}
+
+
+/* Botões */
+button {
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #014a97;
+}

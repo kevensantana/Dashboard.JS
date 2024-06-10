@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Finanças Pessoais</title>
+    <link rel="stylesheet" href="../src/global.css">
+    <link rel="stylesheet" href="./src/styles/index.css">
+    <link rel="icon" href="data:,">
+       <!-- Link para o Font Awesome CDN -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <main class="main-glob">
+        <!-- Barra Lateral -->
+        <div class="sidebar">
+            <h2>Finanças Pessoais</h2>
+            <p id="current-date"></p> <!-- Elemento para exibir a data atual -->
+            <ul>
+                <li><a href="#" onclick="loadPage('src/pages/home.html', 'src/styles/home.css', 'src/scripts/home.js', this)">Início</a></li>
+                <li><a href="#" onclick="loadPage('src/pages/financeiro.html', 'src/styles/financeiro.css', 'src/scripts/financeiro.js', this)">Financeiro</a></li>
+                <li><a href="#" onclick="loadPage('src/pages/analytics.html', 'src/styles/analytics.css', 'src/scripts/analytics.js', this)">Análises</a></li>
+                <li><a href="#" onclick="loadPage('src/pages/perfil.html', 'src/styles/perfil.css', 'src/scripts/perfil.js', this)">Perfil</a></li>
+                <li><a href="#" onclick="loadPage('src/pages/settings.html', 'src/styles/settings.css', 'src/scripts/settings.js', this)">Configurações</a></li>
+            </ul>
+            <button id="logout-btn">Logout</button>
+
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content" id="content">
+            
+            <!-- O conteúdo será carregado dinamicamente aqui -->
+        </div>
+    </main>
+    
+    <!-- JavaScript -->
+    <script src="./index.js"></script>
+    
+</body>
+</html>

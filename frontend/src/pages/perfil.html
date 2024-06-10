@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="src/styles/perfil.css">
+</head>
+<body>
+    <h1>Perfil do Usuário</h1>
+    <div id="profile-container">
+        <p><strong>Nome:</strong> <span id="profile-name"></span></p>
+        <p><strong>Usuário:</strong> <span id="profile-username"></span></p>
+        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        <p><strong>Endereço:</strong> <span id="profile-address"></span></p>
+        <p><strong>Telefone:</strong> <span id="profile-phone"></span></p>
+        <p><strong>Saldo da Conta:</strong> <span id="profile-balance"></span></p>
+        <button id="edit-profile-btn">Editar Perfil</button>
+    </div>
+
+    <div id="edit-profile-form" style="display: none;">
+        <label for="edit-username">Nome de Usuário:</label>
+        <input type="text" id="edit-username"><br>
+        <label for="edit-email">Email:</label>
+        <input type="email" id="edit-email"><br>
+        <label for="edit-address">Endereço:</label>
+        <input type="text" id="edit-address"><br>
+        <label for="edit-phone">Telefone:</label>
+        <input type="text" id="edit-phone"><br>
+        <label for="edit-balance">Saldo da Conta:</label>
+        <input type="text" id="edit-balance" disabled><br>
+        <button id="save-profile-btn">Salvar</button>
+        <button id="cancel-edit-btn">Cancelar</button>
+    </div>
+
+    <script src="src/scripts/perfil.js"></script>
+</body>
+</html>

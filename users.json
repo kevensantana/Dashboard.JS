@@ -2,13 +2,13 @@
   {
     "username": "admin",
     "password": "admin",
-    "email": "johndoe@example.com",
-    "address": "123 Main St, Springfield",
-    "phone": "123-456-7890",
+    "email": "",
+    "address": "",
+    "phone": "",
     "balance": "1000.00"
   },
   {
-    "username": "janedoe",
+    "username": "janedoe2",
     "password": "securepassword",
     "email": "janedoe@example.com",
     "address": "456 Elm St, Springfield",
