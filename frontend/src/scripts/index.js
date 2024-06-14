@@ -81,8 +81,10 @@ function loadPage(page, style, script, element) {
       return response.text();
     })
     .then(data => {
+      // window.location.href = `${page}`
       document.getElementById('content').innerHTML = data;
       loadStyle(style);
+
 
       if (script) {
         loadScript(script, () => {
@@ -129,8 +131,7 @@ function loadCurrentDate() {
 document.addEventListener('DOMContentLoaded', () => {
   const firstLink = document.querySelector('.sidebar ul li a');
   if (firstLink) {
-    console.log('First sidebar link found');
-    loadPage('./src/pages/home.html', './src/styles/home.css', null, firstLink);
+    loadPage('../src/pages/home.html', '../src/styles/home.css', '../src/scripts/home.js', firstLink);
   } else {
     console.warn('First sidebar link not found');
   }
@@ -139,20 +140,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Carregar arquivo de testes apenas em ambiente de desenvolvimento
   if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
-    loadScript('test.js', () => console.log('Script de teste carregado.'));
+    loadScript('../test/test.js', () => console.log('Script de teste carregado.'));
   }
 
   // Adicionar evento ao botão de logout
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
-    console.log('Logout button found');
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('token');
-      window.location.href = 'login.html';
+      window.location.href = '/';
     });
   } else {
     console.warn('Logout button not found');
   }
+
+  // Adicionar eventos de clique para os links de navegação
+  document.querySelectorAll('.sidebar ul li a, .nav-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const page = link.getAttribute('data-page');
+      const style = link.getAttribute('data-style');
+      const script = link.getAttribute('data-script');
+      loadPage(page, style, script, link);
+
+    });
+  });
 });
-
-

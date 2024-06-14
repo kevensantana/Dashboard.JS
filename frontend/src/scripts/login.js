@@ -19,7 +19,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
       alert('Login bem-sucedido!');
       // Redirecionar ou carregar a página de perfil
       // loadPage('pages/perfil.html', 'styles/perfil.css', 'scripts/perfil.js', document.querySelector('.sidebar ul li a[href="#perfil"]'));
-      window.location.href = 'index.html';
+      window.location.href = '../../views';
     } else {
       alert('Login falhou: ' + data.message);
     }
