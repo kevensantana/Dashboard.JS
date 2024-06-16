@@ -20,7 +20,7 @@ function authenticateToken(req, res, next) {
 }
 
 // Novo endpoint para atualizar o perfil
-router.post('/', authenticateToken, (req, res) => {
+router.post('/updateProfile', authenticateToken, (req, res) => {
   const { username, email, address, phone } = req.body;
   const user = users.find(u => u.username === req.user.username);
 

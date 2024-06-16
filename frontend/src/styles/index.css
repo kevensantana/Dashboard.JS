@@ -24,7 +24,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  
 }
+
+.org{
+  display: flex;
+  flex-direction: column;
+}
+
 
 .sidebar p {
   font-size: 1.2em;
@@ -69,6 +77,14 @@
   background-color: #014a97;
 }
 
+.sidebar span{
+  margin-left: 10px;
+}
+
+.sidebar i{
+  width: 20px;
+}
+
 /* Estilos do Conteúdo Principal */
 .main-content {
   flex-grow: 1;
@@ -78,8 +94,32 @@
   box-sizing: border-box;
 }
 
+/* Estilo da barra lateral reduzida */
+.sidebar.collapsed {
+  width: 80px;
+}
 
+.sidebar.collapsed h2, .sidebar.collapsed p {
+  display: none;
+}
 
+.sidebar.collapsed .link-text {
+  display: none;
+}
+
+.sidebar.collapsed ul {
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+.sidebar.collapsed ul li {
+  padding: 10px 0;
+}
+
+.sidebar.collapsed span {
+  display: none;
+}
 
 /* Animações */
 @keyframes fadeIn {

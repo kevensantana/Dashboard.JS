@@ -14,16 +14,21 @@
     <main class="main-glob">
         <!-- Barra Lateral -->
         <div class="sidebar">
+            
             <h2>Finanças Pessoais</h2>
             <p id="current-date"></p> <!-- Elemento para exibir a data atual -->
+        
             <ul>
-                <li><a href="#" data-page="../src/pages/home.html" data-style="../src/styles/home.css" data-script="../src/scripts/home.js" class="nav-link">Início</a></li>
-                <li><a href="#" data-page="../src/pages/financeiro.html" data-style="../src/styles/financeiro.css" data-script="../src/scripts/financeiro.js" class="nav-link">Financeiro</a></li>
-                <li><a href="#" data-page="../src/pages/analytics.html" data-style="../src/styles/analytics.css" data-script="../src/scripts/analytics.js" class="nav-link">Análises</a></li>
-                <li><a href="#" data-page="../src/pages/perfil.html" data-style="../src/styles/perfil.css" data-script="../src/scripts/perfil.js" class="nav-link">Perfil</a></li>
+                <li><a href="#" data-page="../src/pages/home.html" data-style="../src/styles/home.css" data-script="../src/scripts/home.js" class="nav-link"><i class="fas fa-home"></i> <span class="link-text">Início</span></a></li>
+                <li><a href="#" data-page="../src/pages/financeiro.html" data-style="../src/styles/financeiro.css" data-script="../src/scripts/financeiro.js" class="nav-link"><i class="fas fa-dollar-sign"></i> <span class="link-text">Financeiro</span></a></li>
+                <li><a href="#" data-page="../src/pages/analytics.html" data-style="../src/styles/analytics.css" data-script="../src/scripts/analytics.js" class="nav-link"><i class="fas fa-chart-line"></i> <span class="link-text">Análises</span></a></li>
+                <li><a href="#" data-page="../src/pages/perfil.html" data-style="../src/styles/perfil.css" data-script="../src/scripts/perfil.js" class="nav-link"><i class="fas fa-user"></i> <span class="link-text">Perfil</span></a></li>
             </ul>
-            <button id="logout-btn">Logout</button>
-
+        
+           <div class="org" >
+            <button id="logout-btn"><i class="fa-solid fa-share-from-square"></i><span>Sair</span></button>
+            <button id="toggle-sidebar-btn"><i class="fa-solid fa-reply"></i><span>Fechar</span></button>
+           </div>
         </div>
 
         <!-- Conteúdo Principal -->

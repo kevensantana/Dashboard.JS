@@ -1,18 +1,14 @@
 [
   {
-    "username": "admin2",
-    "password": "admin",
-    "email": "",
-    "address": "",
-    "phone": "",
-    "balance": "1000.00"
+    "id": 1,
+    "username": "admin",
+    "email": "alice@example.com",
+    "password": "admin"
   },
   {
-    "username": "janedoe2",
-    "password": "securepassword",
-    "email": "janedoe@example.com",
-    "address": "456 Elm St, Springfield",
-    "phone": "987-654-3210",
-    "balance": "1500.50"
+    "id": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
+    "username": "Keven",
+    "email": "kevensantana40@gmail.com",
+    "password": "123456"
   }
 ]

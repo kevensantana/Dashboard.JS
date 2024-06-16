@@ -1,4 +1,15 @@
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header p {
+    font-size: 1.5em;
+    color: #2c3e50;
+}
+
 /* Estilos para a Seção de Resumo */
 .summary-section {
     display: flex;

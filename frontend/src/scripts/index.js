@@ -166,3 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+  const sidebar = document.querySelector('.sidebar');
+  
+  toggleSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+  });
+
+  // Código existente para carregar o conteúdo dinâmico e manipular o logout
+  // ...
+});
