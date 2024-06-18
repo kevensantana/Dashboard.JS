@@ -25,6 +25,7 @@ app.use('/auth', require('./routes/auth'));
 // Configurar outras rotas
 app.use('/profile', require('./routes/profile'));
 app.use('/updateProfile', require('./routes/updateProfile'));
+// app.use('/financeiro', require('./routes/finance'));
 
 // Redirecionar a rota raiz para a página de login
 app.get('/', (req, res) => {
@@ -39,6 +40,7 @@ express.static.mime.define({'text/css': ['css']});
 const server = app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
 
 // Exportar o servidor para testes
 module.exports = server;

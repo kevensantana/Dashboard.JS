@@ -5,7 +5,7 @@ const router = express.Router();
 
 const SECRET_KEY = 'sua-chave-secreta-super-segura';
 
-let users = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+let users = JSON.parse(fs.readFileSync('db/users.json', 'utf8'));
 
 // Middleware para verificar o token JWT
 function authenticateToken(req, res, next) {

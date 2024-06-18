@@ -9,7 +9,7 @@ const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
 
 // Função para ler usuários do arquivo JSON
 const readUsers = (callback) => {
-    const userFilePath = path.resolve(__dirname, '../users.json');
+    const userFilePath = path.resolve(__dirname, '../db/users.json');
     fs.readFile(userFilePath, (err, data) => {
         if (err) {
             console.error('Erro ao ler users.json:', err);
@@ -21,7 +21,7 @@ const readUsers = (callback) => {
 
 // Função para escrever usuários no arquivo JSON
 const writeUsers = (users, callback) => {
-    const userFilePath = path.resolve(__dirname, '../users.json');
+    const userFilePath = path.resolve(__dirname, '../db/users.json');
     fs.writeFile(userFilePath, JSON.stringify(users, null, 2), (err) => {
         if (err) {
             console.error('Erro ao salvar users.json:', err);
