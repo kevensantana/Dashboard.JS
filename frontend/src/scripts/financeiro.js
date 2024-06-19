@@ -150,6 +150,44 @@ function createActionButtons() {
             <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>`;
 }
 
+
+(function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            const targetId = link.getAttribute('data-target');
+
+            // Esconde todas as seções
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove a classe 'active' de todos os links
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+
+            // Mostra apenas a seção alvo
+            const targetSection = document.getElementById(targetId);
+            targetSection.classList.add('active');
+
+            // Marca o link clicado como ativo
+            link.classList.add('active');
+        });
+    });
+
+    // Mostra a primeira seção por padrão
+    if (sections.length > 0) {
+        sections[0].classList.add('active');
+        navLinks[0].classList.add('active'); // Marca o primeiro link como ativo
+    }
+})();
+
+
+
 // ================================
 // 5. FUNÇÕES DE ATUALIZAÇÃO DE TOTAIS
 // ================================

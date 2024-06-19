@@ -14,7 +14,6 @@
   overflow: hidden;
   background: #fff;
   padding: 10px 20px;
-  margin-top: 30px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
@@ -24,13 +23,16 @@
   display: block;
   color: black;
   text-align: center;
-  padding: 16px 16px;
+  padding: 10px 16px;
+  margin: 0 2px;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #dbdbdb;
   color: black;
+  border-radius: 5px;
 }
 
 /* Seção de Pesquisa e Seleção de Mês */
@@ -46,6 +48,22 @@
   border-radius: 4px;
 }
 
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.nav-link.active {
+  border-bottom: 3px solid #014a97;
+  background-color: #ebebeb;
+  border-radius: 5px;
+
+}
+
+
 /* Títulos */
 
 
@@ -53,7 +71,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   border: 1px solid #aaaaaa;
@@ -65,13 +83,14 @@ table, th, td {
 }
 
 th, td {
-  padding: 8px 10px;
+  padding: 5px 10px;
   text-align: left;
 }
 
 th {
   background-color: #007bff;
   color: #fff;
+  font-weight: bold;
 }
 
 tfoot td {
@@ -88,7 +107,7 @@ tfoot td {
 .section{
   background: #fff;
   padding: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }

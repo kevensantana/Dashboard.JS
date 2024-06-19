@@ -1,54 +1,124 @@
 {
-  "fixedExpenses": [
-      {
-          "name": "Aluguel",
-          "date": "2024-06-01",
-          "price": 1500.00,
-          "installment": "Não",
-          "paymentDate": "2024-07-01",
-          "percentage": "0%"
-      },
-      {
-          "name": "Internet",
-          "date": "2024-06-10",
-          "price": 100.00,
-          "installment": "Não",
-          "paymentDate": "2024-07-10",
-          "percentage": "0%"
-      }
-  ],
-  "variableExpenses": [
-      {
-          "name": "Mercado",
-          "date": "2024-06-05",
-          "price": 300.00,
-          "installment": "Não",
-          "paymentDate": "2024-07-05",
-          "percentage": "0%"
-      },
-      {
-          "name": "Restaurante",
-          "date": "2024-06-15",
-          "price": 150.00,
-          "installment": "Não",
-          "paymentDate": "2024-07-15",
-          "percentage": "0%"
-      }
-  ],
-  "savings": [
-      {
-          "name": "Investimento A",
-          "date": "2024-06-01",
-          "price": 500.00,
-          "goal": 1000.00,
-          "remaining": 500.00
-      },
-      {
-          "name": "Poupança",
-          "date": "2024-06-20",
-          "price": 200.00,
-          "goal": 500.00,
-          "remaining": 300.00
-      }
-  ]
-}
+    "fixedExpenses": [
+        {
+            "name": "Aluguel",
+            "date": "2024-06-01",
+            "price": 1500.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-01",
+            "percentage": "0%"
+        },
+        {
+            "name": "Internet",
+            "date": "2024-06-10",
+            "price": 100.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-10",
+            "percentage": "0%"
+        },
+        {
+            "name": "Plano de Saúde",
+            "date": "2024-06-05",
+            "price": 400.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-05",
+            "percentage": "0%"
+        },
+        {
+            "name": "Seguro do Carro",
+            "date": "2024-06-15",
+            "price": 200.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-15",
+            "percentage": "0%"
+        },
+        {
+            "name": "Energia Elétrica",
+            "date": "2024-06-25",
+            "price": 250.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-25",
+            "percentage": "0%"
+        }
+    ],
+    "variableExpenses": [
+        {
+            "name": "Mercado",
+            "date": "2024-06-05",
+            "price": 300.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-05",
+            "percentage": "0%"
+        },
+        {
+            "name": "Restaurante",
+            "date": "2024-06-15",
+            "price": 150.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-15",
+            "percentage": "0%"
+        },
+        {
+            "name": "Combustível",
+            "date": "2024-06-07",
+            "price": 200.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-07",
+            "percentage": "0%"
+        },
+        {
+            "name": "Lazer",
+            "date": "2024-06-20",
+            "price": 100.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-20",
+            "percentage": "0%"
+        },
+        {
+            "name": "Roupas",
+            "date": "2024-06-22",
+            "price": 150.00,
+            "installment": "Não",
+            "paymentDate": "2024-07-22",
+            "percentage": "0%"
+        }
+    ],
+    "savings": [
+        {
+            "name": "Investimento A",
+            "date": "2024-06-01",
+            "price": 500.00,
+            "goal": 1000.00,
+            "remaining": 500.00
+        },
+        {
+            "name": "Poupança",
+            "date": "2024-06-20",
+            "price": 200.00,
+            "goal": 500.00,
+            "remaining": 300.00
+        },
+        {
+            "name": "Fundo de Emergência",
+            "date": "2024-06-15",
+            "price": 1000.00,
+            "goal": 3000.00,
+            "remaining": 2000.00
+        },
+        {
+            "name": "Viagem",
+            "date": "2024-06-10",
+            "price": 300.00,
+            "goal": 1500.00,
+            "remaining": 1200.00
+        },
+        {
+            "name": "Educação",
+            "date": "2024-06-25",
+            "price": 400.00,
+            "goal": 2000.00,
+            "remaining": 1600.00
+        }
+    ]
+  }
+  
