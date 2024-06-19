@@ -95,13 +95,13 @@ const authenticateToken = (req, res, next) => {
 
 // Endpoint para obter informações do usuário
 router.get('/user', authenticateToken, (req, res) => {
-    console.log('Token JWT decodificado:', req.user); // Adicionado para depuração
+    // console.log('Token JWT decodificado:', req.user); // Adicionado para depuração
     readUsers((users) => {
         const user = users.find(u => u.id === req.user.id);
         if (user) {
             res.json({ success: true, user });
         } else {
-            res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+            res.status(404).json({ success: false, message: 'Usujário não encontrado' });
         }
     });
 });

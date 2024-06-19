@@ -25,6 +25,7 @@ app.use('/auth', require('./routes/auth'));
 // Configurar outras rotas
 app.use('/profile', require('./routes/profile'));
 app.use('/updateProfile', require('./routes/updateProfile'));
+app.use('/finance', require('./routes/finance'));
 // app.use('/financeiro', require('./routes/finance'));
 
 // Redirecionar a rota raiz para a página de login

@@ -29,7 +29,7 @@ router.post('/updateProfile', authenticateToken, (req, res) => {
     user.email = email;
     user.address = address;
     user.phone = phone;
-    fs.writeFileSync('users.json', JSON.stringify(users, null, 2));  // Atualiza o arquivo users.json
+    fs.writeFileSync('db/users.json', JSON.stringify(users, null, 2));  // Atualiza o arquivo users.json
     res.json({ success: true });
   } else {
     res.status(404).json({ message: 'Usuário não encontrado' });

@@ -1,0 +1,54 @@
+{
+  "fixedExpenses": [
+      {
+          "name": "Aluguel",
+          "date": "2024-06-01",
+          "price": 1500.00,
+          "installment": "Não",
+          "paymentDate": "2024-07-01",
+          "percentage": "0%"
+      },
+      {
+          "name": "Internet",
+          "date": "2024-06-10",
+          "price": 100.00,
+          "installment": "Não",
+          "paymentDate": "2024-07-10",
+          "percentage": "0%"
+      }
+  ],
+  "variableExpenses": [
+      {
+          "name": "Mercado",
+          "date": "2024-06-05",
+          "price": 300.00,
+          "installment": "Não",
+          "paymentDate": "2024-07-05",
+          "percentage": "0%"
+      },
+      {
+          "name": "Restaurante",
+          "date": "2024-06-15",
+          "price": 150.00,
+          "installment": "Não",
+          "paymentDate": "2024-07-15",
+          "percentage": "0%"
+      }
+  ],
+  "savings": [
+      {
+          "name": "Investimento A",
+          "date": "2024-06-01",
+          "price": 500.00,
+          "goal": 1000.00,
+          "remaining": 500.00
+      },
+      {
+          "name": "Poupança",
+          "date": "2024-06-20",
+          "price": 200.00,
+          "goal": 500.00,
+          "remaining": 300.00
+      }
+  ]
+}

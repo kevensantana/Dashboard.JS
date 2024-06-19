@@ -7,6 +7,25 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
 
+
+
+// Endpoint para buscar o arquivo JSON Data
+router.get('/', (req, res) => {
+    const dataFilePath = path.resolve(__dirname, '../db/data.json');
+    fs.readFile(dataFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Erro ao ler data.json:', err);
+            res.status(500).json({ message: 'Erro ao ler data.json' });
+            return;
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
+
+
+// ===================================
+
 // Função para ler dados de orçamento do arquivo JSON
 const readBudgetData = (callback) => {
     const budgetFilePath = path.resolve(__dirname, '../db/budgets.json');
