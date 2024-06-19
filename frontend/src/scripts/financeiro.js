@@ -36,8 +36,10 @@
 // 2. FUNÇÃO PRINCIPAL DE INICIALIZAÇÃO
 // ================================
 
+
+
 function initializeApp() {
-    fetch('/finance') // Verifique se o caminho está correto
+    fetch('/finance') // Buscar dados de despesas e economias
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro ao buscar dados');
@@ -127,6 +129,8 @@ function createActionButtons() {
     return `<button onclick="editExpense(this)"><i class="fas fa-edit"></i></button>
             <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>`;
 }
+
+// Navegação de tabelas
 
 (function() {
     const navLinks = document.querySelectorAll('.nav-link:not(.sidebar-nav-link)');
@@ -473,6 +477,5 @@ function runTests() {
     testResults.forEach(result => console.log(result));
     console.groupEnd();
 }
-
 // Executando os testes
 runTests();

@@ -39,7 +39,7 @@ function updateGreeting(username) {
 // Função principal para inicializar a página
 function init() {
   if (!isAuthenticated()) {
-      window.location.href = 'login.html'; // Redirecionar para a página de login se não estiver autenticado
+      window.location.href = '/'; // Redirecionar para a página de login se não estiver autenticado
       return;
   }
 
@@ -48,12 +48,12 @@ function init() {
       if (data.success) {
           updateGreeting(data.user.username);
       } else {
-          window.location.href = 'login.html'; // Redirecionar para a página de login em caso de erro
+          window.location.href = '/'; // Redirecionar para a página de login em caso de erro
       }
   })
   .catch(error => {
       console.error('Erro ao buscar informações do usuário:', error);
-      window.location.href = 'login.html'; // Redirecionar para a página de login em caso de erro
+      window.location.href = '/'; // Redirecionar para a página de login em caso de erro
   });
 }
 

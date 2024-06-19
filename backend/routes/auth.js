@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require('uuid'); // Para gerar IDs únicos
 const router = express.Router();
 const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
 
+
 // Função para ler usuários do arquivo JSON
 const readUsers = (callback) => {
     const userFilePath = path.resolve(__dirname, '../db/users.json');
