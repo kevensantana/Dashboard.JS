@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     fs.readFile(dataFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Erro ao ler data.json:', err);
-            res.status(500).json({ message: 'Erro ao ler data.json' });
+            res.status(500).json({ message: 'Erro ao ler os dados financeiros' });
             return;
         }
         res.json(JSON.parse(data));

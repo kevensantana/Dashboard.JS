@@ -33,28 +33,6 @@
  */
 
 // ================================
-// 1. CONSTANTES E VARIÁVEIS GLOBAIS
-// ================================
-
-const addFixedExpenseButton = document.getElementById('addFixedExpenseButton');
-const addVariableExpenseButton = document.getElementById('addVariableExpenseButton');
-const saveExpenseButton = document.getElementById('saveExpenseButton');
-const cancelExpenseButton = document.getElementById('cancelExpenseButton');
-const closePopup = document.getElementById('closePopup');
-const popup = document.getElementById('expensePopup');
-const fixedTotal = document.getElementById('fixedTotal');
-const variableTotal = document.getElementById('variableTotal');
-const overallTotal = document.getElementById('overallTotal');
-
-const addSavingsButton = document.getElementById('addSavingsButton');
-const saveSavingsButton = document.getElementById('saveSavingsButton');
-const cancelSavingsButton = document.getElementById('cancelSavingsButton');
-const closeSavingsPopup = document.getElementById('closeSavingsPopup');
-const savingsPopup = document.getElementById('savingsPopup');
-
-let currentExpenseType = '';
-
-// ================================
 // 2. FUNÇÃO PRINCIPAL DE INICIALIZAÇÃO
 // ================================
 
@@ -150,15 +128,31 @@ function createActionButtons() {
             <button onclick="deleteExpense(this)"><i class="fas fa-trash-alt"></i></button>`;
 }
 
-
 (function() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link:not(.sidebar-nav-link)');
     const sections = document.querySelectorAll('.section');
+
+    if (navLinks.length === 0 || sections.length === 0) {
+        console.error("Erro: Não foram encontrados links de navegação ou seções.");
+        return;
+    }
 
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault(); // Evita o comportamento padrão do link
             const targetId = link.getAttribute('data-target');
+
+            if (!targetId) {
+                console.error("Erro: O atributo data-target não está definido para um dos links de navegação.", link);
+                return;
+            }
+
+            const targetSection = document.getElementById(targetId);
+
+            if (!targetSection) {
+                console.error(`Erro: Seção alvo com id '${targetId}' não encontrada.`);
+                return;
+            }
 
             // Esconde todas as seções
             sections.forEach(section => {
@@ -171,7 +165,6 @@ function createActionButtons() {
             });
 
             // Mostra apenas a seção alvo
-            const targetSection = document.getElementById(targetId);
             targetSection.classList.add('active');
 
             // Marca o link clicado como ativo
@@ -276,14 +269,14 @@ function deleteExpense(button) {
  * 7.1. Abre o popup para adicionar despesa
  */
 function openPopup() {
-    popup.style.display = 'flex';
+    expensePopup.style.display = 'flex';
 }
 
 /**
  * 7.2. Fecha o popup para adicionar despesa
  */
 function closePopupFunc() {
-    popup.style.display = 'none';
+    expensePopup.style.display = 'none';
 }
 
 /**

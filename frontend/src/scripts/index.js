@@ -88,7 +88,7 @@ function loadPage(page, style, script, element) {
 
       if (script) {
         loadScript(script, () => {
-          console.log(`${script} carregado com sucesso.`);
+          // console.log(`${script} carregado com sucesso.`);
         });
       }
     })
