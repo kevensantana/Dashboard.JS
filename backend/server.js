@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 // Routes
 app.use('/', require('./routes/staticRoutes')); // Rota principal
 app.use('/auth', require('./routes/auth')); // Rotas de autenticação
-app.use('/profile', require('./routes/profile')); // Rotas de perfil
-app.use('/updateProfile', require('./routes/updateProfile')); // Rotas de atualização de perfil
 app.use('/finance', require('./routes/finance')); // Rotas de finanças
 
 // Rota padrão redirecionada para página de login

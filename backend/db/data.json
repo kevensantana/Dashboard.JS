@@ -6,6 +6,7 @@
     "password": "123456",
     "fixedExpenses": [
       {
+        "id": "1",
         "name": "Aluguel",
         "date": "2024-06-01",
         "price": 1500,
@@ -14,16 +15,36 @@
         "percentage": "0%"
       },
       {
+        "id": "2",
         "name": "Internet",
         "date": "2024-06-10",
         "price": 100,
         "installment": "Não",
         "paymentDate": "2024-07-10",
         "percentage": "0%"
+      },
+      {
+        "id": "3",
+        "name": "23232",
+        "date": "",
+        "price": 3232,
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
+      },
+      {
+        "id": "1719519941541",
+        "name": "",
+        "date": "",
+        "price": "",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
       }
     ],
     "variableExpenses": [
       {
+        "id": "1",
         "name": "Mercado",
         "date": "2024-06-05",
         "price": 300,
@@ -32,6 +53,7 @@
         "percentage": "0%"
       },
       {
+        "id": "2",
         "name": "Restaurante",
         "date": "2024-06-15",
         "price": 150,
@@ -42,6 +64,7 @@
     ],
     "savings": [
       {
+        "id": "1",
         "name": "Investimento A",
         "date": "2024-06-01",
         "price": 500,
@@ -49,6 +72,7 @@
         "remaining": 500
       },
       {
+        "id": "2",
         "name": "Poupança",
         "date": "2024-06-20",
         "price": 200,
@@ -58,9 +82,12 @@
     ]
   },
   {
-    "id": "8ea7537d-ed59-465a-b7a8-5f1ad867537e",
+    "userId": "3d15ad14-e2f2-40e4-97bc-99f5a8183458",
     "username": "admin",
-    "email": "admin@gmail.com",
-    "password": "admin"
+    "email": "Kevensant323ana40@gmail.com",
+    "password": "admin",
+    "fixedExpenses": [],
+    "variableExpenses": [],
+    "savings": []
   }
 ]

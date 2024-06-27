@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
 const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
-const userFilePath = path.resolve(__dirname, '../db/users.json');
+const userFilePath = path.resolve(__dirname, '../db/data.json');
 
 // Função para ler usuários do arquivo JSON
 const readUsersFromFile = (callback) => {
@@ -101,5 +101,35 @@ router.get('/user', authenticateToken, (req, res) => {
         }
     });
 });
+
+// Endpoint para atualizar informações do usuário
+router.post('/update-profile', authenticateToken, (req, res) => {
+    const { username, email, address, phone, balance } = req.body;
+    readUsersFromFile((users) => {
+        const userIndex = users.findIndex(u => u.id === req.user.id);
+        if (userIndex !== -1) {
+            // Atualizar dados do usuário
+            users[userIndex] = {
+                ...users[userIndex],
+                username,
+                email,
+                address,
+                phone,
+                balance
+            };
+
+            writeUsersToFile(users, (err) => {
+                if (err) {
+                    res.status(500).json({ success: false, message: 'Erro ao atualizar usuário' });
+                } else {
+                    res.json({ success: true, user: users[userIndex] });
+                }
+            });
+        } else {
+            res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+        }
+    });
+});
+
 
 module.exports = router;
