@@ -5,7 +5,7 @@ const router = express.Router();
 
 const SECRET_KEY = 'sua-chave-secreta-super-segura';
 
-let users = JSON.parse(fs.readFileSync('db/users.json', 'utf8'));
+let users = JSON.parse(fs.readFileSync('db/data.json', 'utf8'));
 
 // Middleware para verificar o token JWT
 function authenticateToken(req, res, next) {
@@ -22,14 +22,14 @@ function authenticateToken(req, res, next) {
 // Novo endpoint para atualizar o perfil
 router.post('/updateProfile', authenticateToken, (req, res) => {
   const { username, email, address, phone } = req.body;
-  const user = users.find(u => u.username === req.user.username);
+  const user = data.find(u => u.username === req.user.username);
 
   if (user) {
     user.username = username;
     user.email = email;
     user.address = address;
     user.phone = phone;
-    fs.writeFileSync('db/users.json', JSON.stringify(users, null, 2));  // Atualiza o arquivo users.json
+    fs.writeFileSync('db/data.json', JSON.stringify(data, null, 2));  // Atualiza o arquivo data.json
     res.json({ success: true });
   } else {
     res.status(404).json({ message: 'Usuário não encontrado' });

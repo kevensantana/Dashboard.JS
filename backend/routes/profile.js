@@ -1,26 +1,12 @@
 const express = require('express');
 const fs = require('fs');
-const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-const SECRET_KEY = 'sua-chave-secreta-super-segura';
 
-let users = JSON.parse(fs.readFileSync('db/users.json', 'utf8'));
-
-// Middleware para verificar o token JWT
-function authenticateToken(req, res, next) {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(401).json({ message: 'Token não fornecido' });
-
-  jwt.verify(token, SECRET_KEY, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Token inválido' });
-    req.user = user;
-    next();
-  });
-}
+let users = JSON.parse(fs.readFileSync('db/data.json', 'utf8'));
 
 // Endpoint protegido para obter informações do perfil
-router.get('/', authenticateToken, (req, res) => {
+router.get('/', (req, res) => {
   const user = users.find(u => u.username === req.user.username);
   if (user) {
     res.json({

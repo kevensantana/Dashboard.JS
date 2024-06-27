@@ -31,15 +31,12 @@
  * 11. EXPOR FUNÇÕES GLOBAIS
  * 12. FUNÇÕES DE TESTE
  */
-
 // ================================
 // 2. FUNÇÃO PRINCIPAL DE INICIALIZAÇÃO
 // ================================
 
-
-
 function initializeApp() {
-    fetch('/finance') // Buscar dados de despesas e economias
+    fetch('/finance/dados') // Buscar dados de despesas e economias
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro ao buscar dados');
@@ -47,9 +44,32 @@ function initializeApp() {
             return response.json();
         })
         .then(data => {
-            renderExpenses('fixedExpensesTable', data.fixedExpenses);
-            renderExpenses('variableExpensesTable', data.variableExpenses);
-            renderSavings(data.savings);
+            console.log('Dados recebidos da API:', data); // Log para depuração
+            if (!Array.isArray(data) || data.length === 0) {
+                console.error('Nenhum usuário encontrado nos dados recebidos da API');
+                return;
+            }
+
+            const user = data[0]; // Escolhe o primeiro usuário da lista
+
+            if (Array.isArray(user.fixedExpenses)) {
+                renderExpenses('fixedExpensesTable', user.fixedExpenses);
+            } else {
+                console.error('Despesas fixas inválidas para o usuário:', user);
+            }
+
+            if (Array.isArray(user.variableExpenses)) {
+                renderExpenses('variableExpensesTable', user.variableExpenses);
+            } else {
+                console.error('Despesas variáveis inválidas para o usuário:', user);
+            }
+
+            if (Array.isArray(user.savings)) {
+                renderSavings(user.savings);
+            } else {
+                console.error('Economias inválidas para o usuário:', user);
+            }
+
             updateTotals();
         })
         .catch(error => console.error('Erro ao carregar dados:', error));
@@ -68,6 +88,11 @@ function renderExpenses(tableId, expenses) {
     const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
     tableBody.innerHTML = ''; // Limpar tabela
 
+    if (!Array.isArray(expenses)) {
+        console.error(`Esperado um array para despesas, mas recebeu:`, expenses);
+        return;
+    }
+
     expenses.forEach(expense => {
         const row = tableBody.insertRow();
         addExpenseCells(row, expense);
@@ -83,13 +108,17 @@ function renderSavings(savings) {
     const tableBody = document.getElementById('savingsTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = ''; // Limpar tabela
 
+    if (!Array.isArray(savings)) {
+        console.error(`Esperado um array para economias, mas recebeu:`, savings);
+        return;
+    }
+
     savings.forEach(saving => {
         const row = tableBody.insertRow();
         addSavingsCells(row, saving);
         row.insertCell(5).innerHTML = createActionButtons();
     });
 }
-
 // ================================
 // 4. FUNÇÕES AUXILIARES DE RENDERIZAÇÃO
 // ================================

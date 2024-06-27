@@ -1,19 +1,22 @@
-{
+[
+  {
+    "userId": "12d014ce-4f1c-4db2-a8db-0bdcf3a4efd8",
+    "username": "keven Santana",
+    "email": "kevensantana40@gmail.com",
+    "password": "123456",
     "fixedExpenses": [
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Aluguel",
         "date": "2024-06-01",
-        "price": 1500.00,
+        "price": 1500,
         "installment": "Não",
         "paymentDate": "2024-07-01",
         "percentage": "0%"
       },
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Internet",
         "date": "2024-06-10",
-        "price": 100.00,
+        "price": 100,
         "installment": "Não",
         "paymentDate": "2024-07-10",
         "percentage": "0%"
@@ -21,19 +24,17 @@
     ],
     "variableExpenses": [
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Mercado",
         "date": "2024-06-05",
-        "price": 300.00,
+        "price": 300,
         "installment": "Não",
         "paymentDate": "2024-07-05",
         "percentage": "0%"
       },
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Restaurante",
         "date": "2024-06-15",
-        "price": 150.00,
+        "price": 150,
         "installment": "Não",
         "paymentDate": "2024-07-15",
         "percentage": "0%"
@@ -41,21 +42,25 @@
     ],
     "savings": [
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Investimento A",
         "date": "2024-06-01",
-        "price": 500.00,
-        "goal": 1000.00,
-        "remaining": 500.00
+        "price": 500,
+        "goal": 1000,
+        "remaining": 500
       },
       {
-        "userId": "2fd40ca4-250e-4882-8890-cafabfd36bd8",
         "name": "Poupança",
         "date": "2024-06-20",
-        "price": 200.00,
-        "goal": 500.00,
-        "remaining": 300.00
+        "price": 200,
+        "goal": 500,
+        "remaining": 300
       }
     ]
+  },
+  {
+    "id": "8ea7537d-ed59-465a-b7a8-5f1ad867537e",
+    "username": "admin",
+    "email": "admin@gmail.com",
+    "password": "admin"
   }
-  
+]

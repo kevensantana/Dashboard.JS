@@ -8,9 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Conexão com o MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Conectado ao MongoDB'))
-  .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
+// mongoose.connect(process.env.MONGO_URI)
+//   .then(() => console.log('Conectado ao MongoDB'))
+//   .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
 
 // Middleware
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -45,5 +45,3 @@ const server = app.listen(PORT, () => {
 
 // Exportar o servidor para testes
 module.exports = server;
-
-
