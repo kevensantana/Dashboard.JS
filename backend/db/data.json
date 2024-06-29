@@ -40,6 +40,24 @@
         "installment": "Não",
         "paymentDate": "",
         "percentage": "0%"
+      },
+      {
+        "id": "1719521260560",
+        "name": "",
+        "date": "",
+        "price": "",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
+      },
+      {
+        "id": "1719522801691",
+        "name": "Som",
+        "date": "",
+        "price": "5000",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
       }
     ],
     "variableExpenses": [
