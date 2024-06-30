@@ -58,6 +58,33 @@
         "installment": "Não",
         "paymentDate": "",
         "percentage": "0%"
+      },
+      {
+        "id": "1719707976956",
+        "name": "wwwe",
+        "date": "",
+        "price": "24242",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
+      },
+      {
+        "id": "1719708185994",
+        "name": "CLL",
+        "date": "2201-09-18",
+        "price": "100",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
+      },
+      {
+        "id": "1719759725488",
+        "name": "",
+        "date": "",
+        "price": "",
+        "installment": "Não",
+        "paymentDate": "",
+        "percentage": "0%"
       }
     ],
     "variableExpenses": [

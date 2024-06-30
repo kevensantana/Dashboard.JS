@@ -108,6 +108,11 @@ router.delete('/deleteExpense', (req, res) => {
 
         const { expenseId, expenseType } = req.body;
 
+        
+        if (!expenseId || !expenseType) {
+            return res.status(400).json({ message: 'Dados insuficientes fornecidos' });
+        }
+
         const data = readData();
         const user = data[0]; // Supondo que estamos lidando com o primeiro usuário
 
@@ -121,7 +126,7 @@ router.delete('/deleteExpense', (req, res) => {
             user.variableExpenses = user.variableExpenses.filter(expense => expense.id !== expenseId);
         } else {
             return res.status(400).json({ message: 'Tipo de despesa inválido' });
-        }
+        }        
 
         writeData(data);
         res.status(200).json({ message: 'Despesa excluída com sucesso' });
@@ -130,5 +135,6 @@ router.delete('/deleteExpense', (req, res) => {
         res.status(500).json({ message: 'Erro ao excluir despesa' });
     }
 });
+
 
 module.exports = router;

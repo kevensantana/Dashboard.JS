@@ -269,6 +269,14 @@ function deleteExpense(button) {
     const expenseId = row.getAttribute('data-id');
     const expenseType = table.getAttribute('data-type');
 
+    console.log('Expense Type:', expenseType); // Adicione um log para depuração
+
+    // Verifica se expenseType é válido
+    if (expenseType !== 'fixed' && expenseType !== 'variable') {
+        console.error('Tipo de despesa inválido:', expenseType);
+        return;
+    }
+
     // Remove a linha da tabela
     row.parentElement.removeChild(row);
 
@@ -276,7 +284,7 @@ function deleteExpense(button) {
     updateTotals();
 
     // Envia uma requisição para o backend para remover a despesa
-    fetch(`/finance/deleteExpense`, {
+    fetch('/finance/deleteExpense', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -519,3 +527,4 @@ updateTotals();
 
 // window.deleteExpense = deleteExpense;
 window.editExpense = editExpense;
+

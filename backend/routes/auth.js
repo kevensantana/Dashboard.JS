@@ -4,6 +4,8 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
+// const User = require('../models/users'); // Importar o modelo de usuário
+
 const router = express.Router();
 const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
 const userFilePath = path.resolve(__dirname, '../db/data.json');
