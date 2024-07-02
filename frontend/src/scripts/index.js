@@ -18,96 +18,6 @@ function addActiveClass(element) {
   element.classList.add('active');
 }
 
-// =================================================================
-
-/* Manipulação de Estilo (CSS) */
-
-/**
- * Carrega dinamicamente um arquivo CSS.
- * @param {string} style - O caminho do arquivo CSS.
- */
-function loadStyle(style) {
-  const existingLink = document.getElementById('dynamic-style');
-  if (existingLink) {
-    existingLink.href = style;
-  } else {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = style;
-    link.id = 'dynamic-style';
-    document.head.appendChild(link);
-  }
-}
-
-// =================================================================
-
-/* Manipulação de Scripts (JS) */
-
-/**
- * Carrega dinamicamente um arquivo JavaScript.
- * @param {string} script - O caminho do arquivo JavaScript.
- * @param {Function} callback - Função a ser chamada após o script ser carregado e executado.
- */
-function loadScript(script, callback) {
-  const existingScript = document.getElementById('dynamic-script');
-  if (existingScript) {
-    existingScript.remove();
-  }
-  const newScript = document.createElement('script');
-  newScript.src = script;
-  newScript.id = 'dynamic-script';
-  newScript.onload = callback;
-  document.body.appendChild(newScript);
-}
-
-// =================================================================
-
-/* Carregamento de Páginas */
-
-/**
- * Carrega dinamicamente uma página HTML, estilo CSS, e script JS associados.
- * @param {string} page - O caminho do arquivo HTML.
- * @param {string} style - O caminho do arquivo CSS.
- * @param {string|null} script - O caminho do arquivo JavaScript (pode ser null).
- * @param {HTMLElement} element - O link que foi clicado.
- */
-function loadPage(page, style, script, element) {
-  removeActiveClass();
-  addActiveClass(element);
-
-  fetch(page)
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.text();
-    })
-    .then(data => {
-      // window.location.href = `${page}`
-      document.getElementById('content').innerHTML = data;
-      loadStyle(style);
-
-
-      if (script) {
-        loadScript(script, () => {
-          // console.log(`${script} carregado com sucesso.`);
-        });
-      }
-    })
-    .catch(error => console.error('Erro ao carregar a página:', error));
-}
-
-// =================================================================
-
-/* Configurações e Eventos */
-
-/**
- * Salva configurações do usuário (nome e email) e exibe um alerta de confirmação.
- */
-function saveSettings() {
-  const username = document.getElementById('username')?.value;
-  const email = document.getElementById('email')?.value;
-  alert(`Configurações salvas!\nNome de usuário: ${username}\nEmail: ${email}`);
-}
-
 /**
  * Carrega e exibe a data atual formatada no elemento com id 'current-date'.
  */
@@ -121,6 +31,91 @@ function loadCurrentDate() {
   }
 }
 
+
+// =================================================================
+
+/* Manipulação de Estilo (CSS) */
+
+/**
+ * Carrega dinamicamente um arquivo CSS.
+ * @param {string} style - O caminho do arquivo CSS.
+ */
+function loadStyle(style) {
+  let link = document.getElementById('dynamic-style');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.id = 'dynamic-style';
+    document.head.appendChild(link);
+  }
+  link.href = style;
+}
+
+// =================================================================
+const loadedScripts = new Set();
+
+/**
+ * Carrega dinamicamente um arquivo JavaScript.
+ * @param {string} script - O caminho do arquivo JavaScript.
+ * @param {Function} callback - Função a ser chamada após o script ser carregado e executado.
+ * @param {boolean} forceReload - Se true, força a recarga do script.
+ */
+function loadScript(script, callback, forceReload = false) {
+  if (!forceReload && loadedScripts.has(script)) {
+    // Script já está carregado e recarregamento não é forçado
+    if (callback) callback();
+    return;
+  }
+
+  // Remove script existente se já estiver carregado
+  const existingScript = document.querySelector(`script[src="${script}"]`);
+  if (existingScript) {
+    existingScript.remove();
+  }
+
+  const newScript = document.createElement('script');
+  newScript.src = script;
+  newScript.id = 'dynamic-script';
+  newScript.onload = () => {
+    loadedScripts.add(script);
+    if (callback) callback();
+  };
+  document.body.appendChild(newScript);
+}
+
+// =================================================================
+
+/* Carregamento de Páginas */
+
+/**
+ * Carrega dinamicamente uma página HTML, estilo CSS, e script JS associados.
+ * @param {string} page - O caminho do arquivo HTML.
+ * @param {string} style - O caminho do arquivo CSS.
+ * @param {string|null} script - O caminho do arquivo JavaScript (pode ser null).
+ * @param {HTMLElement} element - O link que foi clicado.
+ * @param {boolean} forceReloadScript - Se true, força a recarga do script.
+ */
+function loadPage(page, style, script, element, forceReloadScript = false) {
+  removeActiveClass();
+  addActiveClass(element);
+
+  fetch(page)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('content').innerHTML = data;
+      loadStyle(style);
+      if (script) {
+        loadScript(script, () => {
+          console.log(`${script} carregado com sucesso.`);
+        }, forceReloadScript);
+      }
+    })
+    .catch(error => console.error('Erro ao carregar a página:', error));
+}
+
 // =================================================================
 
 /* Inicialização da Página */
@@ -128,22 +123,27 @@ function loadCurrentDate() {
 /**
  * Inicializa a página carregando o conteúdo inicial e configurando eventos.
  */
-document.addEventListener('DOMContentLoaded', () => {
+function initializePage() {
+  const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+  const sidebar = document.querySelector('.sidebar');
+  
+  if (toggleSidebarBtn && sidebar) {
+    toggleSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+  } else {
+    console.warn('Sidebar toggle button or sidebar not found');
+  }
+
   const firstLink = document.querySelector('.sidebar ul li a');
   if (firstLink) {
-    loadPage('../src/pages/home.html', '../src/styles/home.css', '../src/scripts/home.js', firstLink);
+    loadPage(firstLink.dataset.page, firstLink.dataset.style, firstLink.dataset.script, firstLink);
   } else {
     console.warn('First sidebar link not found');
   }
 
   loadCurrentDate();
 
-  // Carregar arquivo de testes apenas em ambiente de desenvolvimento
-  if (['localhost', '127.0.0.1'].includes(window.location.hostname)) {
-    loadScript('../test/test.js', () => console.log('Script de teste carregado.'));
-  }
-
-  // Adicionar evento ao botão de logout
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
@@ -154,28 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Logout button not found');
   }
 
-  // Adicionar eventos de clique para os links de navegação
   document.querySelectorAll('.sidebar ul li a, .nav-link').forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
-      const page = link.getAttribute('data-page');
-      const style = link.getAttribute('data-style');
-      const script = link.getAttribute('data-script');
-      loadPage(page, style, script, link);
-
+      const page = link.dataset.page;
+      const style = link.dataset.style;
+      const script = link.dataset.script;
+      loadPage(page, style, script, link, true);
     });
   });
-});
+}
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
-  const sidebar = document.querySelector('.sidebar');
-  
-  toggleSidebarBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-  });
-
-  // Código existente para carregar o conteúdo dinâmico e manipular o logout
-  // ...
-});
+// Chamar a função de inicialização da página
+initializePage();

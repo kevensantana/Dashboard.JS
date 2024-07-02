@@ -1,81 +1,59 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid');
-
-// const User = require('../models/users'); // Importar o modelo de usuário
-
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+require('../models/Users.js');
+const User = mongoose.model('Users');
+
 const SECRET_KEY = 'seu-segredo-aqui'; // Chave secreta para o JWT
-const userFilePath = path.resolve(__dirname, '../db/data.json');
-
-// Função para ler usuários do arquivo JSON
-const readUsersFromFile = (callback) => {
-    fs.readFile(userFilePath, (err, data) => {
-        if (err) {
-            console.error('Erro ao ler users.json:', err);
-            return callback([]);
-        }
-        callback(JSON.parse(data));
-    });
-};
-
-// Função para escrever usuários no arquivo JSON
-const writeUsersToFile = (users, callback) => {
-    fs.writeFile(userFilePath, JSON.stringify(users, null, 2), (err) => {
-        if (err) {
-            console.error('Erro ao salvar users.json:', err);
-            callback(err);
-        } else {
-            callback(null);
-        }
-    });
-};
 
 // Endpoint para login
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    readUsersFromFile((users) => {
-        const user = users.find(user => user.username === username && user.password === password);
+    try {
+        const user = await User.findOne({ username, password });
 
         if (user) {
-            const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign({ id: user._id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
             res.json({ token });
         } else {
             res.status(401).json({ message: 'Nome de usuário ou senha incorretos' });
         }
-    });
+    } catch (err) {
+        res.status(500).json({ message: 'Erro no servidor', error: err });
+    }
 });
 
 // Endpoint para cadastro
-router.post('/register', (req, res) => {
-    const { username, email, password } = req.body;
+router.post('/register', async (req, res) => {
+    const { username, password, email, age, phone, address } = req.body;
+    let errors = [];
 
-    readUsersFromFile((users) => {
-        const userExists = users.some(user => user.username === username || user.email === email);
+    if (!username) errors.push({ message: "Nome de usuário inválido" });
+    if (!password) errors.push({ message: "Senha inválida" });
+    if (!email) errors.push({ message: "Email inválido" });
+    if (password && password.length < 4) errors.push({ message: "Senha muito curta" });
+
+    if (errors.length > 0) {
+        return res.status(400).json({ success: false, errors });
+    }
+
+    try {
+        const userExists = await User.findOne({ $or: [{ username }, { email }] });
 
         if (userExists) {
-            res.json({ success: false, message: 'Usuário ou email já cadastrado' });
+            return res.status(400).json({ success: false, message: 'Usuário ou email já cadastrado' });
         } else {
-            const newUser = {
-                id: uuidv4(),
-                username,
-                email,
-                password
-            };
-            users.push(newUser);
-
-            writeUsersToFile(users, (err) => {
-                if (err) {
-                    res.status(500).json({ success: false, message: 'Erro ao salvar usuário' });
-                } else {
-                    res.json({ success: true });
-                }
-            });
+            const newUser = new User({ username, password, email, age, phone, address});
+            await newUser.save();
+            res.json({ success: true });
         }
-    });
+        
+
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao cadastrar usuário', error: err });
+    }
 });
 
 // Middleware para verificar o token JWT
@@ -93,45 +71,42 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Endpoint para obter informações do usuário
-router.get('/user', authenticateToken, (req, res) => {
-    readUsersFromFile((users) => {
-        const user = users.find(u => u.id === req.user.id);
+router.get('/user', authenticateToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+
         if (user) {
             res.json({ success: true, user });
         } else {
             res.status(404).json({ success: false, message: 'Usuário não encontrado' });
         }
-    });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao buscar usuário', error: err });
+    }
 });
 
 // Endpoint para atualizar informações do usuário
-router.post('/update-profile', authenticateToken, (req, res) => {
+router.post('/update-profile', authenticateToken, async (req, res) => {
     const { username, email, address, phone, balance } = req.body;
-    readUsersFromFile((users) => {
-        const userIndex = users.findIndex(u => u.id === req.user.id);
-        if (userIndex !== -1) {
-            // Atualizar dados do usuário
-            users[userIndex] = {
-                ...users[userIndex],
-                username,
-                email,
-                address,
-                phone,
-                balance
-            };
 
-            writeUsersToFile(users, (err) => {
-                if (err) {
-                    res.status(500).json({ success: false, message: 'Erro ao atualizar usuário' });
-                } else {
-                    res.json({ success: true, user: users[userIndex] });
-                }
-            });
+    try {
+        const user = await User.findById(req.user.id);
+
+        if (user) {
+            user.username = username || user.username;
+            user.email = email || user.email;
+            user.address = address || user.address;
+            user.phone = phone || user.phone;
+            user.balance = balance || user.balance;
+
+            await user.save();
+            res.json({ success: true, user });
         } else {
             res.status(404).json({ success: false, message: 'Usuário não encontrado' });
         }
-    });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao atualizar usuário', error: err });
+    }
 });
-
 
 module.exports = router;

@@ -125,14 +125,5 @@
         "remaining": 300
       }
     ]
-  },
-  {
-    "userId": "3d15ad14-e2f2-40e4-97bc-99f5a8183458",
-    "username": "admin",
-    "email": "Kevensant323ana40@gmail.com",
-    "password": "admin",
-    "fixedExpenses": [],
-    "variableExpenses": [],
-    "savings": []
   }
 ]
