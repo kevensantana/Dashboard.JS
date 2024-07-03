@@ -39,7 +39,7 @@
                         <option value="10">Outubro</option>
                         <option value="11">Novembro</option>
                         <option value="12">Dezembro</option>
-                    </select>
+                    </select> 
                 </div>
             </div>
         </div>
@@ -130,48 +130,49 @@
         </div>
     </div>
 
+
     <!-- Popup para Adicionar Nova Despesa -->
     <div id="expensePopup" class="popup">
-        <div class="popup-content">
-            <span class="close" id="closePopup">&times;</span>
-            <h2>Adicionar Nova Despesa</h2>
-            <label for="expenseName">Nome do Gasto:</label>
-            <input type="text" id="expenseName"><br>
-            <label for="expenseDate">Data:</label>
-            <input type="date" id="expenseDate"><br>
-            <label for="expensePrice">Preço:</label>
-            <input type="number" id="expensePrice"><br>
-            <label for="expenseInstallment">Parcela:</label>
-            <select id="expenseInstallment">
-                <option value="Não">Não</option>
-                <option value="Sim">Sim</option>
-            </select><br>
-            <label for="paymentDate">Data para Pagar:</label>
-            <input type="date" id="paymentDate"><br>
-            <button id="saveExpenseButton">Salvar</button>
-            <button id="cancelExpenseButton">Cancelar</button>
-        </div>
+    <div class="popup-content">
+        <span class="close" id="closeExpensePopup">&times;</span>
+        <h2>Adicionar Nova Despesa</h2>
+        <label for="expenseName">Nome do Gasto:</label>
+        <input type="text" id="expenseName"><br>
+        <label for="expenseDate">Data:</label>
+        <input type="date" id="expenseDate"><br>
+        <label for="expensePrice">Preço:</label>
+        <input type="number" id="expensePrice"><br>
+        <label for="expenseInstallment">Parcela:</label>
+        <select id="expenseInstallment">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select><br>
+        <label for="paymentDate">Data para Pagar:</label>
+        <input type="date" id="paymentDate"><br>
+        <button id="saveExpenseButton">Salvar</button>
+        <button id="cancelExpenseButton">Cancelar</button>
+    </div>
     </div>
 
     <!-- Popup de Economia -->
     <div id="savingsPopup" class="popup">
-        <div class="popup-content">
-            <span id="closeSavingsPopup" class="close">&times;</span>
-            <h2>Adicionar Economia</h2>
-            <label for="savingsName">Nome:</label>
-            <input type="text" id="savingsName">
-            <label for="savingsDate">Data:</label>
-            <input type="date" id="savingsDate">
-            <label for="savingsAmount">Valor:</label>
-            <input type="number" id="savingsAmount" step="0.01">
-            <label for="savingsGoal">Meta:</label>
-            <input type="number" id="savingsGoal" step="0.01">
-            <button id="saveSavingsButton">Salvar</button>
-            <button id="cancelSavingsButton">Cancelar</button>
-        </div>
+    <div class="popup-content">
+        <span class="close" id="closeSavingsPopup">&times;</span>
+        <h2>Adicionar Economia</h2>
+        <label for="savingsName">Nome:</label>
+        <input type="text" id="savingsName">
+        <label for="savingsDate">Data:</label>
+        <input type="date" id="savingsDate">
+        <label for="savingsAmount">Valor:</label>
+        <input type="number" id="savingsAmount" step="0.01">
+        <label for="savingsGoal">Meta:</label>
+        <input type="number" id="savingsGoal" step="0.01">
+        <button id="saveSavingsButton">Salvar</button>
+        <button id="cancelSavingsButton">Cancelar</button>
+    </div>
     </div>
 
-    <!-- Adicione seu JavaScript aqui -->
-    <!-- <script src="financeiro.js"></script> -->
+
+    <script src="../src/scripts/financeiro.js"></script>
 </body>
 </html>

@@ -1,10 +1,4 @@
-/* ================================================================
- * Funções Utilitárias
- * ================================================================ */
-
-/**
- * Remove a classe 'active' de todos os links da barra lateral.
- */
+//  Remove a classe 'active' de todos os links da barra lateral.
 function removeActiveClass() {
   const links = document.querySelectorAll('.sidebar ul li a, .nav-link');
   links.forEach(link => link.classList.remove('active'));
@@ -30,7 +24,6 @@ function loadCurrentDate() {
     currentDateElement.textContent = formattedDate;
   }
 }
-
 
 // =================================================================
 
@@ -77,9 +70,13 @@ function loadScript(script, callback, forceReload = false) {
   newScript.src = script;
   newScript.id = 'dynamic-script';
   newScript.onload = () => {
-    loadedScripts.add(script);
+    loadedScripts.add(script);  // Adiciona o script ao conjunto de scripts carregados
     if (callback) callback();
   };
+
+  if (document.getElementById('dynamic-script')) {
+    document.getElementById('dynamic-script').remove();
+  }
   document.body.appendChild(newScript);
 }
 
@@ -109,7 +106,7 @@ function loadPage(page, style, script, element, forceReloadScript = false) {
       loadStyle(style);
       if (script) {
         loadScript(script, () => {
-          console.log(`${script} carregado com sucesso.`);
+          // console.log(`${script} carregado com sucesso.`);
         }, forceReloadScript);
       }
     })
@@ -165,5 +162,8 @@ function initializePage() {
   });
 }
 
-// Chamar a função de inicialização da página
-initializePage();
+// Evitando chamar initializePage mais de uma vez.
+if (!window.pageInitialized) {
+  initializePage();
+  window.pageInitialized = true;
+}
