@@ -34,6 +34,160 @@
         <button id="cancel-edit-btn">Cancelar</button>
     </div>
 
+
+    <h1>Perfil do Usuário</h1>
+    <div id="profile-container">
+        <!-- Informações Pessoais -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('personal-info')">Informações Pessoais</h2>
+            <div id="personal-info" class="section-content">
+                <p><strong>Nome Completo:</strong> <span id="profile-fullname"></span></p>
+                <p><strong>Foto do Perfil:</strong> <img id="profile-photo" src="" alt="Foto do Perfil"></p>
+                <p><strong>Data de Nascimento:</strong> <span id="profile-dob"></span></p>
+                <p><strong>Gênero:</strong> <span id="profile-gender"></span></p>
+                <p><strong>Estado Civil:</strong> <span id="profile-marital-status"></span></p>
+                <p><strong>Telefone:</strong> <span id="profile-phone"></span></p>
+                <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                <p><strong>Endereço:</strong></p>
+                <p><strong>Rua:</strong> <span id="profile-street"></span></p>
+                <p><strong>Número:</strong> <span id="profile-number"></span></p>
+                <p><strong>Complemento:</strong> <span id="profile-complement"></span></p>
+                <p><strong>Bairro:</strong> <span id="profile-neighborhood"></span></p>
+                <p><strong>Cidade:</strong> <span id="profile-city"></span></p>
+                <p><strong>Estado:</strong> <span id="profile-state"></span></p>
+                <p><strong>CEP:</strong> <span id="profile-zip"></span></p>
+            </div>
+        </div>
+
+        <!-- Dados Financeiros -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('financial-data')">Dados Financeiros</h2>
+            <div id="financial-data" class="section-content">
+                <p><strong>Renda Mensal:</strong> <span id="profile-income"></span></p>
+                <p><strong>Fonte de Renda Principal:</strong> <span id="profile-main-income"></span></p>
+                <p><strong>Outras Fontes de Renda:</strong> <span id="profile-other-income"></span></p>
+                <p><strong>Conta Bancária:</strong></p>
+                <p><strong>Banco:</strong> <span id="profile-bank"></span></p>
+                <p><strong>Agência:</strong> <span id="profile-agency"></span></p>
+                <p><strong>Número da Conta:</strong> <span id="profile-account-number"></span></p>
+                <p><strong>Tipo de Conta:</strong> <span id="profile-account-type"></span></p>
+            </div>
+        </div>
+
+        <!-- Despesas -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('expenses')">Despesas</h2>
+            <div id="expenses" class="section-content">
+                <h3>Despesas Fixas Mensais</h3>
+                <p><strong>Aluguel/Financiamento Imobiliário:</strong> <span id="profile-rent"></span></p>
+                <p><strong>Contas de Utilidade (Água, Luz, Gás, Internet):</strong> <span id="profile-utilities"></span></p>
+                <p><strong>Parcelas de Financiamentos:</strong> <span id="profile-installments"></span></p>
+                <p><strong>Seguros:</strong> <span id="profile-insurances"></span></p>
+
+                <h3>Despesas Variáveis Mensais</h3>
+                <p><strong>Alimentação:</strong> <span id="profile-food"></span></p>
+                <p><strong>Transporte:</strong> <span id="profile-transport"></span></p>
+                <p><strong>Lazer:</strong> <span id="profile-leisure"></span></p>
+                <p><strong>Compras:</strong> <span id="profile-shopping"></span></p>
+                <p><strong>Saúde:</strong> <span id="profile-health"></span></p>
+
+                <h3>Despesas Ocasionais</h3>
+                <p><strong>Viagens:</strong> <span id="profile-travel"></span></p>
+                <p><strong>Presentes:</strong> <span id="profile-gifts"></span></p>
+                <p><strong>Consertos:</strong> <span id="profile-repairs"></span></p>
+            </div>
+        </div>
+
+        <!-- Patrimônio -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('assets')">Patrimônio</h2>
+            <div id="assets" class="section-content">
+                <h3>Bens Imóveis</h3>
+                <p><strong>Descrição:</strong> <span id="profile-property-description"></span></p>
+                <p><strong>Valor Estimado:</strong> <span id="profile-property-value"></span></p>
+                
+                <h3>Bens Móveis</h3>
+                <p><strong>Veículos:</strong> <span id="profile-vehicles"></span></p>
+                <p><strong>Outros Bens de Valor:</strong> <span id="profile-other-assets"></span></p>
+                
+                <h3>Investimentos</h3>
+                <p><strong>Tipo de Investimento:</strong> <span id="profile-investment-type"></span></p>
+                <p><strong>Valor Atual:</strong> <span id="profile-investment-value"></span></p>
+            </div>
+        </div>
+
+        <!-- Metas Financeiras -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('financial-goals')">Metas Financeiras</h2>
+            <div id="financial-goals" class="section-content">
+                <p><strong>Objetivo de Poupança:</strong> <span id="profile-savings-goal"></span></p>
+                <p><strong>Valor Alvo:</strong> <span id="profile-savings-target"></span></p>
+                <p><strong>Prazo:</strong> <span id="profile-savings-deadline"></span></p>
+
+                <p><strong>Objetivo de Investimento:</strong> <span id="profile-investment-goal"></span></p>
+                <p><strong>Valor Alvo:</strong> <span id="profile-investment-target"></span></p>
+                <p><strong>Prazo:</strong> <span id="profile-investment-deadline"></span></p>
+
+                <p><strong>Objetivo de Aquisição:</strong> <span id="profile-acquisition-goal"></span></p>
+                <p><strong>Tipo de Bem:</strong> <span id="profile-acquisition-type"></span></p>
+                <p><strong>Valor Alvo:</strong> <span id="profile-acquisition-target"></span></p>
+                <p><strong>Prazo:</strong> <span id="profile-acquisition-deadline"></span></p>
+            </div>
+        </div>
+
+        <!-- Histórico Financeiro -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('financial-history')">Histórico Financeiro</h2>
+            <div id="financial-history" class="section-content">
+                <h3>Histórico de Transações</h3>
+                <p><strong>Data:</strong> <span id="profile-transaction-date"></span></p>
+                <p><strong>Tipo (Receita, Despesa):</strong> <span id="profile-transaction-type"></span></p>
+                <p><strong>Descrição:</strong> <span id="profile-transaction-description"></span></p>
+                <p><strong>Valor:</strong> <span id="profile-transaction-value"></span></p>
+
+                <h3>Resumo Mensal</h3>
+                <p><strong>Total de Receitas:</strong> <span id="profile-total-income"></span></p>
+                <p><strong>Total de Despesas:</strong> <span id="profile-total-expenses"></span></p>
+                <p><strong>Saldo:</strong> <span id="profile-balance"></span></p>
+            </div>
+        </div>
+
+        <!-- Configurações do Perfil -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('profile-settings')">Configurações do Perfil</h2>
+            <div id="profile-settings" class="section-content">
+                <h3>Preferências de Notificação</h3>
+                <p><strong>Email:</strong> <span id="profile-email-notifications"></span></p>
+                <p><strong>SMS:</strong> <span id="profile-sms-notifications"></span></p>
+                <p><strong>Notificações no App:</strong> <span id="profile-app-notifications"></span></p>
+
+                <h3>Configurações de Privacidade</h3>
+                <p><strong>Visibilidade do Perfil:</strong> <span id="profile-visibility"></span></p>
+                <p><strong>Compartilhamento de Dados:</strong> <span id="profile-data-sharing"></span></p>
+
+                <h3>Segurança</h3>
+                <p><strong>Mudança de Senha:</strong> <span id="profile-change-password"></span></p>
+                <p><strong>Autenticação de Dois Fatores:</strong> <span id="profile-2fa"></span></p>
+            </div>
+        </div>
+
+        <!-- Documentos Importantes -->
+        <div class="section">
+            <h2 class="section-header" onclick="toggleSection('important-documents')">Documentos Importantes</h2>
+            <div id="important-documents" class="section-content">
+                <p><strong>Contratos:</strong> <span id="profile-contracts"></span></p>
+                <p><strong>Recibos:</strong> <span id="profile-receipts"></span></p>
+                <p><strong>Comprovantes de Pagamento:</strong> <span id="profile-payment-proofs"></span></p>
+            </div>
+        </div>
+
+        <button id="edit-profile-btn">Editar Perfil</button>
+    </div>
+
+    <div id="edit-profile-form" style="display: none;">
+        <!-- Formulário de Edição será preenchido com JavaScript posteriormente -->
+    </div>
+
     <script src="../scripts/perfil.js"></script>
 </body>
 </html>

@@ -1,23 +1,22 @@
 // Função para buscar o perfil do usuário
-const fetchUserProfile = async () => {
+function fetchUserProfile() {
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/'; // Redirecionar para a página de login se o token não estiver presente
         return;
     }
 
-    try {
-        const response = await fetch('/auth/user', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
+    fetch('/auth/user', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json().then(data => ({ status: response.status, data })))
+    .then(result => {
+        if (result.status === 200) {
+            const data = result.data;
             // Atualizar a exibição do perfil
             document.getElementById('profile-username').textContent = data.user.username;
             document.getElementById('profile-email').textContent = data.user.email;
@@ -26,37 +25,37 @@ const fetchUserProfile = async () => {
             document.getElementById('profile-phone').textContent = data.user.phone || 'Não fornecido';
             document.getElementById('profile-balance').textContent = data.user.balance || '0';
         } else {
-            console.error('Erro ao obter informações do usuário:', data.message);
+            console.error('Erro ao obter informações do usuário:', result.data.message);
             window.location.href = '/'; // Redirecionar para a página de login em caso de erro
         }
-    } catch (error) {
+    })
+    .catch(error => {
         console.error('Erro ao obter informações do usuário:', error);
         window.location.href = '/'; // Redirecionar para a página de login em caso de erro
-    }
-};
+    });
+}
 
 // Função para atualizar o perfil do usuário
-const updateUserProfile = async (username, email, address, phone, balance) => {
+function updateUserProfile(username, email, address, phone, balance) {
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/'; // Redirecionar para a página de login se o token não estiver presente
         return;
     }
 
-    try {
-        const response = await fetch('/auth/update-profile', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, email, address, phone, balance })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
+    fetch('/auth/update-profile', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, email, address, phone, balance })
+    })
+    .then(response => response.json().then(data => ({ status: response.status, data })))
+    .then(result => {
+        if (result.status === 200) {
             alert('Perfil atualizado com sucesso!');
+            const data = result.data;
             // Atualizar a exibição do perfil
             document.getElementById('profile-username').textContent = data.user.username;
             document.getElementById('profile-email').textContent = data.user.email;
@@ -65,15 +64,16 @@ const updateUserProfile = async (username, email, address, phone, balance) => {
             document.getElementById('profile-phone').textContent = data.user.phone || 'Não fornecido';
             document.getElementById('profile-balance').textContent = data.user.balance || '0';
         } else {
-            console.error('Erro ao atualizar o perfil:', data.message);
+            console.error('Erro ao atualizar o perfil:', result.data.message);
         }
-    } catch (error) {
+    })
+    .catch(error => {
         console.error('Erro ao atualizar o perfil:', error);
-    }
-};
+    });
+}
 
 // Configura os eventos para os botões de edição e salvamento do perfil
-const setupEventListeners = () => {
+function setupEventListeners() {
     const editProfileBtn = document.getElementById('edit-profile-btn');
     const saveProfileBtn = document.getElementById('save-profile-btn');
     const cancelEditBtn = document.getElementById('cancel-edit-btn');
@@ -114,6 +114,15 @@ const setupEventListeners = () => {
         profileContainer.style.display = 'block';
         editProfileForm.style.display = 'none';
     });
+}
+
+function toggleSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section.style.display === "none" || section.style.display === "") {
+        section.style.display = "block";
+    } else {
+        section.style.display = "none";
+    }
 }
 
 // Inicializa a aplicação
